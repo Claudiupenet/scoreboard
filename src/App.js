@@ -32,11 +32,13 @@ class App extends Component {
 
   addPlayerHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.name.value);
-    const players = [...this.state.players];
-    players.push({name: e.target.name.value, score: 0, id: players[players.length -1].id + 1})
-    this.setState({players: players})
-    e.target.name.value='';
+    if(e.target.name.value !== "") {
+      const players = [...this.state.players];
+      players.push({name: e.target.name.value, score: 0, id: players[players.length -1].id + 1})
+      this.setState({players: players})
+      e.target.name.value='';
+    } else alert("You must enter a player!")
+    
   }
 
   render() {
